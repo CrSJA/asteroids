@@ -1,10 +1,15 @@
 import pygame as pg
 from constants import *
+from player import *
 def main():
-
-    pg.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
-    clok = pg.time.Clock()
+    pg.init()
+    screen = pg.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+    clok =  pg.time.Clock()
     dt=0
+
+    play=player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+
+
 
     while True:
         for event in pg.event.get():
@@ -14,7 +19,7 @@ def main():
         
 
 
-
+        play.draw(screen)
         pg.display.flip()
         dt = (clok.tick(60))/1000
 
