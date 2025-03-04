@@ -30,7 +30,10 @@ def main():
             
         
         updatable.update(dt)   # updates and draws everiting
-  
+        for a in asteroids:
+            if a.is_coliding(playe):
+                print("game over")
+                return
 
         for a in drawable:
             a.draw(screen)
