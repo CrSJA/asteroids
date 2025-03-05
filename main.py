@@ -3,7 +3,9 @@ from constants import *
 from player import player
 from asteroid import asteroid
 from asteroidfield import AsteroidField
+from shot import shoot
 def main():
+    
     pg.init()
     screen = pg.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
     clok =  pg.time.Clock()
@@ -12,10 +14,12 @@ def main():
     updatable=pg.sprite.Group() 
     drawable=pg.sprite.Group()
     asteroids=pg.sprite.Group()
+    shoots=pg.sprite.Group()
 
     player.containers = (updatable,drawable) # adds all player instances to two groups must be before declaration of object player
     asteroid.containers = (asteroids,updatable,drawable)
     AsteroidField.containers = (updatable)
+    shoot.containers=(updatable,drawable,shoots)
 
     playe=player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
     assfield=AsteroidField()
@@ -34,6 +38,14 @@ def main():
             if a.is_coliding(playe):
                 print("game over")
                 return
+
+        for asteroir in asteroids:
+            for bullet in shoots:
+                if asteroir.is_coliding(bullet):
+                    asteroir.kill()
+                    bullet.kill() 
+                    pass
+
 
         for a in drawable:
             a.draw(screen)
