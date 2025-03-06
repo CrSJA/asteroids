@@ -31,7 +31,7 @@ class player(CircleShape):
     def shot(self):
         bullet=shoot(self.position.x,self.position.y)
         bullet.velocity=pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
-        self.cooldown=0.3
+        self.cooldown=0.2
 
     def update(self, dt):
         keys = pygame.key.get_pressed()

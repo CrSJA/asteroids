@@ -42,8 +42,8 @@ def main():
         for asteroir in asteroids:
             for bullet in shoots:
                 if asteroir.is_coliding(bullet):
-                    asteroir.kill()
-                    bullet.kill() 
+                    asteroir.split()
+                    bullet.kill()  
                     pass
 
 
